@@ -170,7 +170,9 @@ claude "/human"
 ## Key Design Patterns
 
 ### 1. Daemon Model
-Agents never stop. When idle, they snooze for 5 minutes, pull, and check for work again. This creates a truly autonomous system.
+Agents are designed to run continuously - when idle, they snooze for 5 minutes, pull, and check for work again. The goal is maximum autonomy with minimum human babysitting.
+
+**Reality check:** Agents are like us. Eventually they forget their instructions, get confused, or declare "my work is complete" when it isn't. The snooze loop and forbidden phrases in CLAUDE.md are designed to minimize this, but it still happens. When it does, just restart them. The framework is designed to be resilient - agents save state via git, and work coordination happens through GitHub labels, so restarting is cheap.
 
 ### 2. Label-Based Coordination
 No chat/Slack needed. Agents find work via `agent:*` labels and request reviews via `needs-review:*` labels.

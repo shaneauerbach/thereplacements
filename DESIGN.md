@@ -46,6 +46,30 @@ This gives:
 - Regular git pulls to get new work
 - 5 minutes between cycles (adjustable)
 
+### The Reality: Agents Forget
+
+Despite the daemon design, agents eventually:
+- Forget they're supposed to loop forever
+- Summarize their session and stop
+- Declare "all work is complete" when it isn't
+- Get confused after many cycles
+
+**Why this happens:** LLMs have finite context windows. After enough work, earlier instructions (like "never stop") get pushed out or lose salience. This is similar to how humans lose focus after long work sessions.
+
+**Mitigations built into the framework:**
+
+1. **Forbidden phrases** - CLAUDE.md lists phrases like "session summary" that signal an agent is about to stop incorrectly. These act as guardrails.
+
+2. **Snooze countdown** - The visible countdown (`Snoozing... 150s remaining`) keeps the loop prominent in context.
+
+3. **Git state persistence** - All work is committed to branches, so nothing is lost when an agent stops.
+
+4. **Label-based coordination** - Work state lives in GitHub labels, not agent memory. A restarted agent can pick up where it left off.
+
+5. **Cheap restarts** - Because state is external, restarting an agent is trivial. Just run the launch command again.
+
+**Practical expectation:** Plan for agents to run for hours, not days. Check on them periodically. When they stop incorrectly, restart them. This is normal.
+
 ---
 
 ## 2. Label-Based Coordination
