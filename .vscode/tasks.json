@@ -1,0 +1,72 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Launch Engineer Agent",
+      "type": "shell",
+      "command": "cd ~/github/yourproject-engineer && git fetch origin && claude --dangerously-skip-permissions \"You are the Engineer agent. Read agents/engineer/identity.md, context.md, feedback.md, received-feedback.md then IMMEDIATELY start the autonomous work loop from CLAUDE.md. Do NOT wait for instructions - check GitHub for work and execute autonomously.\"",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Launch QA Agent",
+      "type": "shell",
+      "command": "cd ~/github/yourproject-qa && git fetch origin && claude --dangerously-skip-permissions \"You are the QA agent. Read agents/qa/identity.md, context.md, feedback.md, received-feedback.md then IMMEDIATELY start the autonomous work loop from CLAUDE.md. Do NOT wait for instructions - check GitHub for work and execute autonomously.\"",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Launch Architect Agent",
+      "type": "shell",
+      "command": "cd ~/github/yourproject-architect && git fetch origin && claude --dangerously-skip-permissions \"You are the Architect agent. Read agents/architect/identity.md, context.md, feedback.md, received-feedback.md then IMMEDIATELY start the autonomous work loop from CLAUDE.md. Do NOT wait for instructions - check GitHub for work and execute autonomously.\"",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Launch Product Manager Agent",
+      "type": "shell",
+      "command": "cd ~/github/yourproject-pm && git fetch origin && claude --dangerously-skip-permissions \"You are the Product Manager agent. Read agents/product-manager/identity.md, context.md, feedback.md, received-feedback.md and follow CLAUDE.md workflow.\"",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": [],
+      "isBackground": true
+    },
+    {
+      "label": "Launch All Agents",
+      "dependsOn": [
+        "Launch Engineer Agent",
+        "Launch QA Agent",
+        "Launch Architect Agent",
+        "Launch Product Manager Agent"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": [],
+      "runOptions": {
+        "runOn": "default"
+      }
+    },
+    {
+      "label": "Launch Core Agents (Engineer + QA)",
+      "dependsOn": [
+        "Launch Engineer Agent",
+        "Launch QA Agent"
+      ],
+      "dependsOrder": "parallel",
+      "problemMatcher": []
+    }
+  ]
+}
