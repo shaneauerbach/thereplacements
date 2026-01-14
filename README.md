@@ -36,119 +36,50 @@ Claude will help you:
 
 ### 2. Set Up Git Worktrees
 
-Each agent needs its own working directory to avoid git conflicts. Git worktrees let multiple agents work in parallel, each on their own branch, while sharing the same repository history.
+Each agent needs its own working directory to avoid git conflicts. Ask Claude Code to help:
 
-#### Why Worktrees?
-
-Without worktrees, if Engineer runs `git checkout feature-a` and QA runs `git checkout feature-b`, they'd constantly conflict. Worktrees give each agent an isolated workspace.
-
-#### Create Worktrees
-
-```bash
-# From your main project directory
-cd ~/github/myproject
-
-# Create a worktree for each agent you want to run
-git worktree add ../myproject-engineer main
-git worktree add ../myproject-qa main
-git worktree add ../myproject-pm main
-git worktree add ../myproject-architect main
+```
+claude "Help me set up git worktrees for the agents in this project"
 ```
 
-This creates:
+This will create separate workspaces like:
 ```
 ~/github/
 ├── myproject/              # Main repo (human workspace)
 ├── myproject-engineer/     # Engineer agent workspace
 ├── myproject-qa/           # QA agent workspace
-├── myproject-pm/           # Product Manager workspace
-└── myproject-architect/    # Architect workspace
+└── ...
 ```
 
-#### Worktree Management
-
-```bash
-# List all worktrees
-git worktree list
-
-# Remove a worktree (if you want fewer agents)
-git worktree remove ../myproject-architect
-
-# Add a worktree later
-git worktree add ../myproject-architect main
-```
-
-#### Update VS Code Tasks
-
-After creating worktrees, update `.vscode/tasks.json` to match your paths:
-
-```json
-{
-  "command": "cd ~/github/myproject-engineer && ..."
-}
-```
-
-Replace `yourproject` with your actual project name (e.g., `myproject`).
+See [DESIGN.md](./DESIGN.md) for details on why worktrees are needed.
 
 ### 3. Create GitHub Labels
 
-The agents use labels to coordinate work. Create these in your repo:
+The agents use labels to coordinate work. Ask Claude Code to create them:
 
-```bash
-# Agent assignment labels
-gh label create "agent:engineer" --color "1d76db"
-gh label create "agent:qa" --color "0e8a16"
-gh label create "agent:pm" --color "d93f0b"
-gh label create "agent:architect" --color "5319e7"
-
-# Review request labels
-gh label create "needs-review:engineer" --color "fbca04"
-gh label create "needs-review:qa" --color "fbca04"
-gh label create "needs-review:pm" --color "fbca04"
-gh label create "needs-review:architect" --color "fbca04"
-
-# Approval labels
-gh label create "approved:engineer" --color "0e8a16"
-gh label create "approved:qa" --color "0e8a16"
-gh label create "approved:pm" --color "0e8a16"
-gh label create "approved:architect" --color "0e8a16"
-gh label create "approved:human" --color "0e8a16"
-
-# Status labels
-gh label create "status:needs-changes" --color "d93f0b"
-gh label create "status:blocked" --color "b60205"
-gh label create "needs-human" --color "c2e0c6"
-gh label create "needs-human-merge" --color "c2e0c6"
-
-# Priority labels
-gh label create "priority:high" --color "b60205"
-gh label create "priority:medium" --color "fbca04"
-gh label create "priority:low" --color "0e8a16"
 ```
+claude "Create the GitHub labels needed for this multi-agent framework"
+```
+
+See [docs/workflow-reference.md](./docs/workflow-reference.md) for the full label reference.
 
 ### 4. Launch Agents
 
-Use VS Code/Cursor tasks (Cmd+Shift+P → "Run Task"):
-- **Launch Engineer Agent**
-- **Launch QA Agent**
-- **Launch All Agents**
+Use VS Code/Cursor tasks (Cmd+Shift+P → "Run Task") to launch agents, or ask Claude Code:
 
-Or manually:
-```bash
-cd ~/github/myproject-engineer
-claude "You are the Engineer agent. Read agents/engineer/identity.md, context.md, feedback.md then start the work loop from CLAUDE.md."
+```
+claude "Help me launch the Engineer and QA agents"
 ```
 
 ### 5. Monitor as Human Team Lead
 
-```bash
-# Check what needs your attention
-gh pr list --label "needs-human-merge"
-gh issue list --label "needs-human"
+Check what needs your attention periodically, or use the `/human` skill:
 
-# Or use the /human skill
+```
 claude "/human"
 ```
+
+This walks you through any pending decisions or PRs needing approval.
 
 ## Architecture
 
