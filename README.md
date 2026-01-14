@@ -13,6 +13,12 @@ This repository provides scaffolding for running multiple Claude Code agents tha
 
 The agents work autonomously, review each other's code, and escalate to a human team lead only when necessary.
 
+## Prerequisites
+
+- **Claude Max subscription** ($100-$200/month) - Running multiple autonomous agents burns through tokens quickly. You'll need Claude Max to sustain this kind of workload.
+- **Claude Code CLI** - Install from [claude.ai/code](https://claude.ai/code)
+- **GitHub CLI** (`gh`) - For label management and PR workflows
+
 ## Quick Start
 
 ### 1. Clone and Customize
