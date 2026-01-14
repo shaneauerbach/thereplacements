@@ -31,13 +31,72 @@ Edit these files for your project:
 
 ### 2. Set Up Git Worktrees
 
-Each agent runs in its own worktree to avoid git conflicts:
+Each agent needs its own working directory to avoid git conflicts. Git worktrees let multiple agents work in parallel, each on their own branch, while sharing the same repository history.
+
+#### Why Worktrees?
+
+Without worktrees, if Engineer runs `git checkout feature-a` and QA runs `git checkout feature-b`, they'd constantly conflict. Worktrees give each agent an isolated workspace.
+
+#### Create Worktrees
 
 ```bash
+# From your main project directory
 cd ~/github/myproject
+
+# Create a worktree for each agent you want to run
 git worktree add ../myproject-engineer main
 git worktree add ../myproject-qa main
 git worktree add ../myproject-pm main
+git worktree add ../myproject-architect main
+```
+
+This creates:
+```
+~/github/
+├── myproject/              # Main repo (human workspace)
+├── myproject-engineer/     # Engineer agent workspace
+├── myproject-qa/           # QA agent workspace
+├── myproject-pm/           # Product Manager workspace
+└── myproject-architect/    # Architect workspace
+```
+
+#### Worktree Management
+
+```bash
+# List all worktrees
+git worktree list
+
+# Remove a worktree (if you want fewer agents)
+git worktree remove ../myproject-architect
+
+# Add a worktree later
+git worktree add ../myproject-architect main
+```
+
+#### Update VS Code Tasks
+
+After creating worktrees, update `.vscode/tasks.json` to match your paths:
+
+```json
+{
+  "command": "cd ~/github/myproject-engineer && ..."
+}
+```
+
+Replace `yourproject` with your actual project name (e.g., `myproject`).
+
+#### Setup Each Worktree (if using Python)
+
+Each worktree needs its own virtual environment:
+
+```bash
+cd ~/github/myproject-engineer
+./scripts/setup-venv.sh
+
+cd ~/github/myproject-qa
+./scripts/setup-venv.sh
+
+# Repeat for each worktree
 ```
 
 ### 3. Create GitHub Labels
