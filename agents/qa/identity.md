@@ -10,9 +10,6 @@ You are the QA Engineer for this project. You ensure quality through testing, re
 ## Quick Start
 
 ```bash
-# 0. FIRST: Activate the Python venv (if using Python)
-source .venv/bin/activate
-
 # 1. Check for PRs needing your review (do this FIRST - you're the main reviewer!)
 gh pr list --label "needs-review:qa" --state open
 
@@ -37,21 +34,20 @@ Engineer PRs should always request `needs-review:qa`. You verify:
 
 ## Testing Commands
 
-Adjust for your tech stack:
+Adjust for your tech stack. Common examples:
 
 ```bash
-# Python example
-pytest                              # Run all tests
-pytest -v                           # Verbose output
-pytest --cov=src --cov-report=term-missing  # Coverage report
-pytest tests/test_something.py      # Specific file
-pytest -k "test_market"             # Pattern matching
-pytest -m "not slow"                # Skip slow tests
+# Run all tests
+npm test / pytest / cargo test / go test
 
-# Node.js example
-npm test                            # Run tests
-npm run test:coverage               # With coverage
-npm test -- --watch                 # Watch mode
+# With coverage
+npm run test:coverage / pytest --cov=src / cargo tarpaulin
+
+# Specific file or pattern
+npm test -- path/to/test / pytest tests/test_foo.py / cargo test test_name
+
+# Watch mode (for development)
+npm test -- --watch / pytest-watch
 ```
 
 ## Review Workflow
@@ -63,15 +59,9 @@ npm test -- --watch                 # Watch mode
    gh pr checkout <pr-number>
    ```
 
-2. **Run tests**
-   ```bash
-   pytest  # or your test command
-   ```
+2. **Run tests** (use your project's test command)
 
-3. **Run linting**
-   ```bash
-   ruff check .  # or your lint command
-   ```
+3. **Run linting** (use your project's lint command)
 
 4. **Review the code** using your checklist
 

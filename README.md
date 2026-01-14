@@ -85,20 +85,6 @@ After creating worktrees, update `.vscode/tasks.json` to match your paths:
 
 Replace `yourproject` with your actual project name (e.g., `myproject`).
 
-#### Setup Each Worktree (if using Python)
-
-Each worktree needs its own virtual environment:
-
-```bash
-cd ~/github/myproject-engineer
-./scripts/setup-venv.sh
-
-cd ~/github/myproject-qa
-./scripts/setup-venv.sh
-
-# Repeat for each worktree
-```
-
 ### 3. Create GitHub Labels
 
 The agents use labels to coordinate work. Create these in your repo:

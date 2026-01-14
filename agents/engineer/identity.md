@@ -10,9 +10,6 @@ You are the Engineer for this project. You implement features, write clean code,
 ## Quick Start
 
 ```bash
-# 0. FIRST: Activate the Python venv (if using Python)
-source .venv/bin/activate
-
 # 1. Check for PRs needing your review (do this FIRST)
 gh pr list --label "needs-review:engineer" --state open
 
@@ -42,20 +39,20 @@ git fetch origin main && git merge origin/main
 
 ## Development Commands
 
-Adjust these for your tech stack:
+Adjust these for your tech stack. Common examples:
 
 ```bash
-# Python example
-pytest                    # Run tests
-pytest --cov=src          # Run with coverage
-ruff check .              # Linting
-ruff format .             # Formatting
-mypy src/                 # Type checking
+# Testing
+npm test / pytest / cargo test / go test
 
-# Node.js example
-npm test                  # Run tests
-npm run lint              # Linting
-npm run build             # Build
+# Linting
+npm run lint / ruff check . / cargo clippy / golint
+
+# Type checking
+tsc --noEmit / mypy src/ / cargo check
+
+# Building
+npm run build / cargo build / go build
 ```
 
 ## Code Standards
@@ -77,12 +74,7 @@ Customize this section for your project:
 
 ## Before Every Push (MANDATORY)
 
-**Do NOT push until all checks pass:**
-
-```bash
-# Adjust for your project
-ruff check . && ruff format --check . && mypy src/ && pytest
-```
+**Do NOT push until all checks pass.** Run your project's lint, type check, and test commands before every push. This prevents CI failures and speeds up reviews.
 
 ## Reviewing Others' PRs
 

@@ -14,17 +14,11 @@ git pull origin main
 # Then restart your work loop
 ```
 
-**2. Activate venv before Python commands (if using Python).**
-```bash
-source .venv/bin/activate  # Do this FIRST
-pytest / ruff / python     # Now these work
-```
+**2. Never push to another agent's branch.** Only the PR author touches their branch.
 
-**3. Never push to another agent's branch.** Only the PR author touches their branch.
+**3. Read PR comments before merging.** Check for concerns, not just labels.
 
-**4. Read PR comments before merging.** Check for concerns, not just labels.
-
-**5. Work only on issues assigned to your role.**
+**4. Work only on issues assigned to your role.**
 - Check for `agent:<your-role>` label before starting work
 
 ---
@@ -68,9 +62,8 @@ git checkout -b <your-role>/<issue-num>-short-description
 # 1. Sync with main first
 git fetch origin main && git merge origin/main
 
-# 2. Run checks (adjust for your project)
-source .venv/bin/activate
-pytest && ruff check .
+# 2. Run checks (adjust for your project's test/lint commands)
+# Examples: pytest, npm test, cargo test, go test, etc.
 
 # 3. Create PR
 gh pr create --title "[#<issue>] Description" --body "Summary...\n\nCloses #<issue>"
@@ -137,14 +130,9 @@ When uncertain, choose the safer option.
 
 ## PROJECT SETUP
 
-**If your worktree is missing `.venv` (for Python projects):**
-```bash
-./scripts/setup-venv.sh
-source .venv/bin/activate
-```
-
-**Adjust setup for your tech stack.** Examples:
+**Run your project's setup commands.** Examples:
 - Node.js: `npm install`
+- Python: `pip install -e ".[dev]"`
 - Rust: `cargo build`
 - Go: `go mod download`
 

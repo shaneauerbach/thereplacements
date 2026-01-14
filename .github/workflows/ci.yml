@@ -13,44 +13,40 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Customize this section for your tech stack
+      # ============================================
+      # CUSTOMIZE THIS SECTION FOR YOUR TECH STACK
+      # ============================================
 
-      # Python example:
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev]"
-
-      - name: Run linting
-        run: ruff check .
-
-      - name: Check formatting
-        run: ruff format --check .
-
-      - name: Run type checking
-        run: mypy src --ignore-missing-imports
-
-      - name: Run tests
-        run: pytest --tb=short -q
-
-      # Node.js example (uncomment if using Node):
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v4
+      # Example: Node.js
+      # - uses: actions/setup-node@v4
       #   with:
       #     node-version: '20'
       #     cache: 'npm'
-      #
-      # - name: Install dependencies
-      #   run: npm ci
-      #
-      # - name: Run linting
-      #   run: npm run lint
-      #
-      # - name: Run tests
-      #   run: npm test
+      # - run: npm ci
+      # - run: npm run lint
+      # - run: npm test
+
+      # Example: Python
+      # - uses: actions/setup-python@v5
+      #   with:
+      #     python-version: '3.11'
+      # - run: pip install -e ".[dev]"
+      # - run: ruff check .
+      # - run: pytest
+
+      # Example: Rust
+      # - uses: dtolnay/rust-toolchain@stable
+      # - run: cargo fmt --check
+      # - run: cargo clippy
+      # - run: cargo test
+
+      # Example: Go
+      # - uses: actions/setup-go@v5
+      #   with:
+      #     go-version: '1.21'
+      # - run: go fmt ./...
+      # - run: go vet ./...
+      # - run: go test ./...
+
+      - name: Placeholder
+        run: echo "Configure CI for your tech stack in .github/workflows/ci.yml"
