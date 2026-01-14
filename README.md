@@ -65,11 +65,13 @@ See [docs/workflow-reference.md](./docs/workflow-reference.md) for the full labe
 
 ### 4. Launch Agents
 
-Use VS Code/Cursor tasks (Cmd+Shift+P → "Run Task") to launch agents, or ask Claude Code:
+First, update the VS Code tasks with your project paths:
 
 ```
-claude "Help me launch the Engineer and QA agents"
+claude "Update .vscode/tasks.json with the correct paths for my worktrees"
 ```
+
+Then use VS Code/Cursor tasks (Cmd+Shift+P → "Run Task") to launch agents.
 
 ### 5. Monitor as Human Team Lead
 
