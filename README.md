@@ -18,7 +18,7 @@ The agents work autonomously, review each other's code, and escalate to a human 
 ### 1. Clone and Customize
 
 ```bash
-git clone https://github.com/yourusername/thereplacements myproject
+git clone https://github.com/shaneauerbach/thereplacements myproject
 cd myproject
 ```
 
