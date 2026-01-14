@@ -2,8 +2,6 @@
 
 A framework for autonomous multi-agent collaboration using Claude Code.
 
-> *"It's a joke about how these agentic teams will replace us in tech."*
-
 ## What Is This?
 
 This repository provides scaffolding for running multiple Claude Code agents that collaborate on software development. Each agent has:
@@ -24,10 +22,17 @@ git clone https://github.com/yourusername/thereplacements myproject
 cd myproject
 ```
 
-Edit these files for your project:
-- `agents/*/context.md` - Add your project-specific knowledge
-- `CLAUDE.md` - Adjust risk philosophy if needed
-- Update repo references from `OWNER/REPO` to your actual repo
+Then open Claude Code and tell it what you want to build:
+
+```
+claude "I want to use this multi-agent framework to build [your project].
+Help me customize the agent context files and set everything up."
+```
+
+Claude will help you:
+- Update `agents/*/context.md` with your project-specific knowledge
+- Adjust `CLAUDE.md` for your risk philosophy
+- Configure repo references and labels
 
 ### 2. Set Up Git Worktrees
 
@@ -217,27 +222,23 @@ Agents can give each other feedback, recorded in `received-feedback.md`. When pa
 
 ## Customizing for Your Project
 
-### Adding Project Context
+The easiest way to customize is to ask Claude Code:
 
-Edit `agents/*/context.md` to add your specific:
-- Tech stack and patterns
-- Domain knowledge
-- Current priorities
-- Important files and locations
+```
+claude "Help me add a new Security agent to this framework"
+claude "Update the engineer context for a React/Node.js project"
+claude "I don't need the Architect agent, help me remove it"
+```
 
-### Adjusting Agent Roles
+Claude will update the relevant files, labels, and VS Code tasks for you.
 
-You can:
-- Remove agents you don't need
-- Add new agents by copying an existing agent directory
-- Modify responsibilities in identity files
+### What Can Be Customized
 
-### Changing the Label System
-
-If you want different labels, update:
-- `CLAUDE.md` (the reference section)
-- `docs/workflow-reference.md`
-- Each agent's identity file (the Labels section)
+- **Agent roles** - Add, remove, or modify agents
+- **Context files** - Project-specific knowledge per agent
+- **Label system** - Different labels or workflows
+- **CI pipeline** - Your tech stack's test/lint commands
+- **Risk philosophy** - What requires human approval
 
 ## For More Information
 
