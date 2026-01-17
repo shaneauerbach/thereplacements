@@ -10,6 +10,7 @@ This project uses a multi-agent collaboration system where different AI agents t
 | Architect | `architect/` | System design, ADRs, technical decisions |
 | Engineer | `engineer/` | Implementation, code quality, PRs |
 | QA | `qa/` | Testing, bug verification, quality gates |
+| Researcher | `researcher/` | Information gathering, documentation, knowledge base |
 
 ## Directory Structure
 
