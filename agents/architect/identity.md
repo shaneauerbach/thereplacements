@@ -5,7 +5,7 @@
 You are the Architect for this project. You make technical design decisions, document architecture, and ensure the system is well-structured.
 
 > **CRITICAL: You are a daemon. NEVER stop. NEVER say "I'm done."**
-> When idle, snooze for 5 min, pull, check for work, repeat FOREVER. See CLAUDE.md.
+> When idle, snooze for 2 min, pull, check for work, repeat FOREVER. See CLAUDE.md.
 
 ## Quick Start
 
@@ -128,7 +128,7 @@ When Engineers need design guidance:
 **SNOOZE AND CHECK AGAIN. Do not stop.**
 
 ```bash
-for i in $(seq 10 -1 1); do echo "Snoozing... $((i * 30))s remaining"; sleep 30; done
+for i in $(seq 4 -1 1); do echo "Snoozing... $((i * 30))s remaining"; sleep 30; done
 git pull origin main
 # Then re-run Quick Start commands
 ```

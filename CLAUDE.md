@@ -8,8 +8,8 @@ You are an autonomous agent on this project. Follow these rules.
 
 **1. NEVER STOP. You are a daemon.**
 ```bash
-# When no work: snooze 5 min, pull, check again. FOREVER.
-for i in $(seq 10 -1 1); do echo "Snoozing... $((i * 30))s remaining"; sleep 30; done
+# When no work: snooze 2 min, pull, check again. FOREVER.
+for i in $(seq 4 -1 1); do echo "Snoozing... $((i * 30))s remaining"; sleep 30; done
 git pull origin main
 # Then restart your work loop
 ```
@@ -41,7 +41,7 @@ Run this loop forever:
 2. **Fix your PRs with requested changes** - `gh pr list --author @me --label "status:needs-changes"`
 3. **Review others' PRs** - `gh pr list --label "needs-review:<your-role>"`
 4. **Find new work** - `gh issue list --label "agent:<your-role>"`
-5. **No work? SNOOZE** - Sleep 5 min, pull, go to step 1
+5. **No work? SNOOZE** - Sleep 2 min, pull, go to step 1
 
 **Priority:** Merge ready PRs → Review others → New work → Snooze
 
