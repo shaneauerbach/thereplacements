@@ -14,6 +14,7 @@ Detailed reference for agent workflows. See `CLAUDE.md` for the essentials.
 | `agent:architect` | Assigned to Architect |
 | `agent:engineer` | Assigned to Engineer |
 | `agent:qa` | Assigned to QA |
+| `agent:researcher` | Assigned to Researcher |
 | `needs-human` | Needs human team lead input |
 | `priority:high` | High priority |
 | `priority:medium` | Medium priority |
@@ -31,11 +32,13 @@ Detailed reference for agent workflows. See `CLAUDE.md` for the essentials.
 | `needs-review:architect` | PR author | Architect should review |
 | `needs-review:engineer` | PR author | Engineer should review |
 | `needs-review:pm` | PR author | PM should review |
+| `needs-review:researcher` | PR author | Researcher should review |
 | `needs-human-merge` | PR author | Human must approve before merge |
 | `approved:qa` | QA | QA approved |
 | `approved:architect` | Architect | Architect approved |
 | `approved:engineer` | Engineer | Engineer approved |
 | `approved:pm` | PM | PM approved |
+| `approved:researcher` | Researcher | Researcher approved |
 | `approved:human` | Human | Human approved |
 | `status:needs-changes` | Reviewer | Author must address feedback |
 

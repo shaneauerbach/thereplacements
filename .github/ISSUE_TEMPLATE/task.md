@@ -25,7 +25,7 @@ Any technical details or constraints.
 - Blocks #
 
 ## Agent Assignment
-<!-- Add one of: agent:pm, agent:architect, agent:engineer, agent:qa -->
+<!-- Add one of: agent:pm, agent:architect, agent:engineer, agent:qa, agent:researcher -->
 
 ## Priority
 <!-- Add one of: priority:high, priority:medium, priority:low -->

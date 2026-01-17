@@ -16,6 +16,8 @@ cd ~/github/yourproject
 git worktree add ../yourproject-engineer main
 git worktree add ../yourproject-qa main
 git worktree add ../yourproject-pm main
+git worktree add ../yourproject-architect main
+git worktree add ../yourproject-researcher main
 ```
 
 ### Launch Agents
@@ -28,6 +30,12 @@ cd ~/github/yourproject-qa && claude "You are the QA agent. Read agents/qa/ident
 
 # PM
 cd ~/github/yourproject-pm && claude "You are the Product Manager agent. Read agents/product-manager/identity.md, context.md, feedback.md, received-feedback.md and follow CLAUDE.md workflow."
+
+# Architect
+cd ~/github/yourproject-architect && claude "You are the Architect agent. Read agents/architect/identity.md, context.md, feedback.md, received-feedback.md and follow CLAUDE.md workflow."
+
+# Researcher
+cd ~/github/yourproject-researcher && claude "You are the Researcher agent. Read agents/researcher/identity.md, context.md, feedback.md, received-feedback.md and follow CLAUDE.md workflow."
 ```
 
 ### Daily Check-In
