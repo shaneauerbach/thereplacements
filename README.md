@@ -114,7 +114,7 @@ This walks you through any pending decisions or PRs needing approval.
 ## Key Design Patterns
 
 ### 1. Daemon Model
-Agents are designed to run continuously - when idle, they snooze for 5 minutes, pull, and check for work again. The goal is maximum autonomy with minimum human babysitting.
+Agents are designed to run continuously - when idle, they snooze for 2 minutes, pull, and check for work again. The goal is maximum autonomy with minimum human babysitting.
 
 **Reality check:** Agents are like us. Eventually they forget their instructions, get confused, or declare "my work is complete" when it isn't. The snooze loop and forbidden phrases in CLAUDE.md are designed to minimize this, but it still happens. When it does, just restart them. The framework is designed to be resilient - agents save state via git, and work coordination happens through GitHub labels, so restarting is cheap.
 
@@ -145,7 +145,8 @@ Agents can give each other feedback, recorded in `received-feedback.md`. When pa
 │   │   └── received-feedback.md # Feedback from other agents
 │   ├── qa/
 │   ├── product-manager/
-│   └── architect/
+│   ├── architect/
+│   └── researcher/
 ├── .vscode/tasks.json           # VS Code tasks to launch agents
 ├── .claude/
 │   └── skills/

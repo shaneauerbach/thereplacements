@@ -20,7 +20,7 @@ Traditional AI assistants wait for input, do a task, and stop. This framework us
 │                                         │
 │  ┌─────────┐    ┌─────────┐    ┌─────┐ │
 │  │ Check   │───►│  Work   │───►│Snooze│ │
-│  │for work │    │         │    │5 min │ │
+│  │for work │    │         │    │2 min │ │
 │  └─────────┘    └─────────┘    └──┬──┘ │
 │       ▲                           │     │
 │       └───────────────────────────┘     │
@@ -34,7 +34,7 @@ Traditional AI assistants wait for input, do a task, and stop. This framework us
 
 ### The Snooze Pattern
 ```bash
-for i in $(seq 10 -1 1); do
+for i in $(seq 4 -1 1); do
   echo "Snoozing... $((i * 30))s remaining"
   sleep 30
 done
@@ -44,7 +44,7 @@ git pull origin main
 This gives:
 - Visual feedback that the agent is alive
 - Regular git pulls to get new work
-- 5 minutes between cycles (adjustable)
+- 2 minutes between cycles (adjustable)
 
 ### The Reality: Agents Forget
 
